@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Redirecting...</title>
+   <style>
+      body {
+         background-color: #f5f5f5;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100vh;
+         font-family: Arial, sans-serif;
+      }
+      .redirect-container {
+         text-align: center;
+         padding: 20px;
+      }
+      .redirect-btn {
+         background-color: #3498db;
+         color: white;
+         border: none;
+         padding: 10px 20px;
+         border-radius: 5px;
+         cursor: pointer;
+         font-size: 16px;
+      }
+      .redirect-btn:hover {
+         background-color: #2980b9;
+      }
+   </style>
+</head>
+<body>
+   <div class="redirect-container">
+      <button id="redirectBtn" class="redirect-btn">เข้าสู่เว็บไซต์</button>
+   </div>
+
+   <script>
+      // ซ่อนลิงก์ด้วยการแบ่งและเข้ารหัส
+      function getScriptUrl() {
+         // แบ่งเป็นส่วนๆ เพื่อซ่อน URL
+         const p1 = "h";
+         const p2 = "ttps://script.";
+         const p3 = "google.com/a/~/";
+         const p4 = "macros/s/AKfycbzQdE3MObmbNsAOU0gmxqysre-2qCmIPD0n3yTNO_5ZoR7ApOJUWY6fwSGdg0HZLWnA/exec";
+         
+         return p1 + p2 + p3 + p4;
+      }
+      
+      document.getElementById('redirectBtn').addEventListener('click', function() {
+         // ใช้ window.location.href เพื่อนำทางไปยัง URL
+         window.location.href = getScriptUrl();
+      });
+      
+      // Auto redirect หลังจาก 3 วินาที ถ้าผู้ใช้ไม่กดปุ่ม
+      setTimeout(function() {
+         window.location.href = getScriptUrl();
+      }, 3000);
+   </script>
+</body>
+</html>
