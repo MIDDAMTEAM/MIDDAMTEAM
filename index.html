@@ -46,19 +46,6 @@
          color: #3498db;
          font-family: Arial, sans-serif;
       }
-      #content {
-         display: none;
-         width: 100%;
-         height: 100%;
-         position: absolute;
-         top: 0;
-         left: 0;
-      }
-      iframe {
-         width: 100%;
-         height: 100%;
-         border: none;
-      }
    </style>
 </head>
 <body>
@@ -66,44 +53,10 @@
       <div class="loader"></div>
       <div class="loader-text">กำลังโหลด...</div>
    </div>
-   
-   <div id="content">
-      <!-- iframe จะถูกเพิ่มด้วย JavaScript เพื่อซ่อนลิงก์จาก HTML -->
-   </div>
-   
    <script>
-      // ซ่อนลิงก์โดยใช้ฟังก์ชัน และไม่เก็บลิงก์ในตัวแปรที่เข้าถึงได้ง่าย
-      function getTargetUrl() {
-         // แบ่งรหัส Base64 เป็นส่วนๆ เพื่อซ่อนลิงก์เพิ่มเติม
-         const part1 = "aHR0cHM6Ly9zY3JpcHQ";
-         const part2 = "uZ29vZ2xlLmNvbS9hL34vbWFj";
-         const part3 = "cm9zL3MvQUtmeWNielFkRTNNT2JtYk5zQU9VMGdteHF5c3JlLTJxQ21JUEQwbjN5VE5PXzVab1I3QXBPSlVXWTZmd1NHZGcwSFpMV25BL2V4ZWM=";
-         
-         // รวมชิ้นส่วนและถอดรหัส Base64
-         return atob(part1 + part2 + part3);
-      }
-      
-      // สร้าง iframe เมื่อโหลดเสร็จ
+      // Redirect ไปยังไฟล์ที่สอง
       setTimeout(() => {
-         // สร้าง iframe element
-         const iframe = document.createElement('iframe');
-         
-         // ตั้งค่า iframe โดยไม่แสดงลิงก์ใน HTML
-         iframe.id = 'mainFrame';
-         iframe.allowFullscreen = true;
-         
-         // ใช้ฟังก์ชันเพื่อรับ URL และกำหนดให้ iframe
-         iframe.src = getTargetUrl();
-         
-         // เพิ่ม iframe ไปยังหน้าเว็บ
-         document.getElementById('content').appendChild(iframe);
-         
-         // ซ่อน loader และแสดง content
-         document.getElementById('loader').style.display = 'none';
-         document.getElementById('content').style.display = 'block';
-         
-         // ล้างฟังก์ชันหลังจากใช้งาน
-         window.getTargetUrl = null;
+         window.location.href = "redirect.html";
       }, 1000);
    </script>
 </body>
